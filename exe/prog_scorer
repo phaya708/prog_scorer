@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+require 'prog_scorer'
+ProgScorer::CLI.start
