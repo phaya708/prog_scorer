@@ -51,6 +51,7 @@ module ProgScorer
           #system("gcc #{file} #{main_filename}")
           test_files = []
           student_number = Pathname(file).basename(".*")
+          puts "#{student_number} scoring... "
           Dir.glob("#{root_dir}/tmp/*.#{language["ext"]}").each do |file|
             test_files.append(file)
           end
