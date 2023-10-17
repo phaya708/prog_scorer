@@ -44,11 +44,17 @@ module ProgScorer
 
       for root_dir in root_dirs do
         report_name = root_dir.split("/")[-1]
-        p dir = "#{root_dir}/src/#{student_number}.#{language["ext"]}"
+        p "#{report_name} scoring..."
+
+        if student_number == "*"
+          dir = "#{report_number}/#{report_name}/src/#{student_number}.#{language["ext"]}"
+        else
+          dir = "#{report_number}/#{report_name}/src/*#{student_number}*.#{language["ext"]}"
+        end
+
         score = Score.new(report_number, report_name)
         Dir.glob(dir).each do |file|
           system("cp #{file} #{root_dir}/tmp/#{report_name}.#{language["ext"]}")
-          #system("gcc #{file} #{main_filename}")
           test_files = []
           student_number = Pathname(file).basename(".*")
           puts "#{student_number} scoring... "
